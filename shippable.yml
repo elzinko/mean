@@ -1,0 +1,2 @@
+after_success:
+  - git push git@heroku.com:mystore-meanjs.git master
