@@ -8,7 +8,7 @@
 #VBoxManage modifyvm "boot2docker-vm" --natpf1 "containergruntreload,tcp,,35729,,35729"
 #VBoxManage modifyvm "boot2docker-vm" --natpf1 "guestmongodb,tcp,127.0.0.1,27017,,27017"
 
-boot2docker up
+boot2docker start
 
 export DOCKER_HOST=tcp://192.168.59.103:2376
 export DOCKER_CERT_PATH=/Users/elzinko/.boot2docker/certs/boot2docker-vm
