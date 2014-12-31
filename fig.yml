@@ -4,9 +4,13 @@ web:
    - db
   ports:
    - "3000:3000"
+   - "35729:35729"
+  volumes:
+   - ./app:/home/mean/app
+   - ./public:/home/mean/public
   environment: 
    NODE_ENV: development
 db:
-  image: mongo:2.8.0
+  image: mongo:latest
   ports: 
    - "27017:27017"
