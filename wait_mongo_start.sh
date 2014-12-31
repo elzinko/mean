@@ -24,4 +24,4 @@ do
 done
  
 # start node app
-grunt
+grunt debug
