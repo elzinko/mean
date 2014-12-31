@@ -8,6 +8,8 @@ web:
   volumes:
    - ./app:/home/mean/app
    - ./public:/home/mean/public
+   - ./public:/home/mean/public
+   - ./config:/home/mean/config
   environment: 
    NODE_ENV: development
 db:
