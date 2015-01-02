@@ -1,24 +1,37 @@
 <section data-ng-controller="HomeController">
 
-    <!--    <div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
-            <div ng-repeat='item in reddit.items'>
-                <span class='score'>{{item.score}}</span>
-                <span class='title'>
-                    <a ng-href='{{item.url}}' target='_blank'>{{item.title}}</a>
-                </span>
-                <small>by {{item.author}} -
-                    <a ng-href='http://reddit.com{{item.permalink}}' target='_blank'>{{item.num_comments}} comments</a>
-                </small>
-                <div style='clear: both;'></div>
-            </div>
-            <div ng-show='reddit.busy'>Loading data...</div>
-        </div>-->
+    <br>MyStore Team test 1.
 
-        <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
-            <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
-        </div>
+    <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
+        <img ng-repeat='image in images' ng-src='http://placehold.it/225x250&text={{image}}'>
+    </div>
 
-    <div></div>
-    <br>MyStore Team test 8.
+    <!--
+    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='2'>
+        <img ng-repeat='image in placehold.images' ng-src='http://placehold.it/225x250&text={{image}}'>
+    </div>
+    <div ng-show='placehold.busy'>Loading data...</div>
+    -->
+
+    <!--
+    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='2'>
+        <img image-lazy-src="http://placehold.it/225x250&text={{image}}" ng-repeat="image in placehold.images">
+        <div ng-show='reddit.busy'>Loading data...</div>
+    </div>
+    -->
+
+    <!--<div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='1'>
+    <div ng-repeat='item in reddit.items'>
+        <span class='score'>{{item.score}}</span>
+            <span class='title'>
+                <a ng-href='{{item.url}}' target='_blank'>{{item.title}}</a>
+            </span>
+        <small>by {{item.author}} -
+            <a ng-href='http://reddit.com{{item.permalink}}' target='_blank'>{{item.num_comments}} comments</a>
+        </small>
+        <div style='clear: both;'></div>
+    </div>
+    <div ng-show='reddit.busy'>Loading data...</div>
+</div>-->
 
 </section>
