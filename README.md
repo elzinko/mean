@@ -2,6 +2,10 @@
 
 MyStore is a social network shopping open-source solution, which provides a solid. The idea is to
 
+## modules installation
+bower install ngInfiniteScroll
+bower install afkl-lazy-image -p
+
 ## Credits
 The MyStore name was coined by [Thomas Couderc]
 
