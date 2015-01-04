@@ -1,17 +1,15 @@
 'use strict';
 
 
-angular.module('core').controller('HomeController', ['$scope', 'Authentication',
-	function($scope, Authentication/*, Placehold*/) {
+var myApp = angular.module('core');
+
+myApp.controller('HomeController', ['$scope', 'Authentication', 'Reddit',
+	function($scope, Authentication, Reddit/*, Placehold*/) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
-		//$scope.placehold = new Placehold();
-		//$scope.reddit = new Reddit();
-
-
+		/* OK 1
 		$scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
-
 
 		$scope.loadMore = function() {
 			var last = $scope.images[$scope.images.length - 1];
@@ -19,7 +17,10 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 				$scope.images.push(last + i);
 			}
 		};
+		*/
 
+		//$scope.placehold = new Placehold();
+		$scope.reddit = new Reddit();
 	}
 ]);
 
@@ -46,9 +47,9 @@ angular.factory('Placehold', function() {
 });
 */
 
-/*
+
 // Reddit constructor function to encapsulate HTTP and pagination logic
-angular.factory('Reddit', function($http) {
+myApp.factory('Reddit', function($http) {
 	var Reddit = function() {
 		this.items = [];
 		this.busy = false;
@@ -71,7 +72,7 @@ angular.factory('Reddit', function($http) {
 	};
 
 	return Reddit;
-});*/
+});
 
 /*
 angular.module('core', []).service(
