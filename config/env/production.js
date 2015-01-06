@@ -16,6 +16,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.min.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+				'public/lib/afkl-lazy-image/release/lazy-image-style.min.css'
 			],
 			js: [
 				'public/lib/angular/angular.min.js',
@@ -23,7 +24,20 @@ module.exports = {
 				'public/lib/angular-animate/angular-animate.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/angular-ui-utils/ui-utils.min.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
+				'public/lib/ngInfiniteScroll/build/ng-infinite-scroll.min.js',
+				'public/lib/afkl-lazy-image/release/lazy-image.min.js',
+				'public/lib/get-style-property/get-style-property.min.js',
+				'public/lib/get-size/get-size.min.js',
+				'public/lib/eventEmitter/EventEmitter.min.js',
+				'public/lib/eventie/eventie.min.js',
+				'public/lib/doc-ready/doc-ready.min.js',
+				'public/lib/matches-selector/matches-selector.min.js',
+				'public/lib/outlayer/item.min.js',
+				'public/lib/outlayer/outlayer.min.js',
+				'public/lib/masonry/masonry.min.js',
+				'public/lib/imagesloaded/imagesloaded.min.js',
+				'public/lib/angular-masonry/angular-masonry.min.js'
 			]
 		},
 		css: 'public/dist/application.min.css',
