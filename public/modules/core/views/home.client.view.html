@@ -1,6 +1,6 @@
 <section data-ng-controller="HomeController">
 
-    <br>MyStore Team test 1.
+    <br>MyStore stores test.
 
     <!-- OK 1
     <div infinite-scroll='loadMore()' infinite-scroll-distance='2'>
@@ -14,26 +14,13 @@
     </div>
     -->
 
-    <!--
-    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='2'>
-        <img ng-repeat='image in placehold.images' ng-src='http://placehold.it/225x250&text={{image}}'>
-    </div>
-    <div ng-show='placehold.busy'>Loading data...</div>
-    -->
-
-    <!--
-    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='2'>
-        <img image-lazy-src="http://placehold.it/225x250&text={{image}}" ng-repeat="image in placehold.images">
-        <div ng-show='reddit.busy'>Loading data...</div>
-    </div>
-    -->
-
+    <!-- OK 3 REDDIT
     <div infinite-scroll='reddit.nextPage()' infinite-scroll-disabled='reddit.busy' infinite-scroll-distance='0'>
         <div ng-repeat='item in reddit.items'>
             <span class='score'>{{item.score}}</span>
-      <span class='title'>
-        <a ng-href='{{item.url}}' target='_blank'>{{item.title}}</a>
-      </span>
+            <span class='title'>
+                <a ng-href='{{item.url}}' target='_blank'>{{item.title}}</a>
+            </span>
             <small>by {{item.author}} -
                 <a ng-href='http://reddit.com{{item.permalink}}' target='_blank'>{{item.num_comments}} comments</a>
             </small>
@@ -41,6 +28,42 @@
         </div>
         <div ng-show='reddit.busy'>Loading data...</div>
     </div>
-</div>-->
+    -->
+
+    <!-- OK 4 placehold
+    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='0'>
+        <img ng-repeat='image in placehold.images' ng-src='http://placehold.it/225x250&text={{image}}'>
+        <div ng-show='placehold.busy'>Loading data...</div>
+        <div style='clear: both;'></div>
+    </div>
+    -->
+
+    <!-- Ok 5 ngInfiniteScroll + afkl-lazy-image + placehold.it
+    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='0'>
+        <div afkl-lazy-image="http://placehold.it/225x250&text={{image}}" ng-repeat="image in placehold.images" class="col-sm-4"></div>
+        <div ng-show='placehold.busy'>Loading data...</div>
+    </div>
+    -->
+
+    <!-- OK 6  5 + bootstrap tab
+    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='0'>
+        <div class="row">
+            <div ng-if="$index % 3 == 0" class="clearfix"></div>
+            <div afkl-lazy-image="http://placehold.it/225x250&text={{image}}" ng-repeat="image in placehold.images" class="col-sm-4">
+            <div ng-show='placehold.busy'>Loading data...</div>
+        </div>
+    </div>
+
+    // @see ngInfiniteScroll documentation
+    <div style='clear: both;'></div>
+    -->
+    <div infinite-scroll='placehold.nextPage()' infinite-scroll-disabled='placehold.busy' infinite-scroll-distance='0'>
+        <div masonry>
+            <div class="masonry-brick" ng-repeat="image in placehold.images">
+                <img ng-src="{{image}}">
+            </div>
+            <div ng-show='placehold.busy'>Loading data...</div>
+        </div>
+    </div>
 
 </section>

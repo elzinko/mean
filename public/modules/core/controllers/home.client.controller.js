@@ -3,65 +3,47 @@
 
 var myApp = angular.module('core');
 
-myApp.controller('HomeController', ['$scope', 'Authentication', 'Reddit',
-	function($scope, Authentication, Reddit/*, Placehold*/) {
+/* OK 1 & 2
+myApp.controller('HomeController', ['$scope', 'Authentication',
+	function ($scope, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
 
-		/* OK 1
 		$scope.images = [1, 2, 3, 4, 5, 6, 7, 8];
 
-		$scope.loadMore = function() {
+		$scope.loadMore = function () {
 			var last = $scope.images[$scope.images.length - 1];
-			for(var i = 1; i <= 8; i++) {
+			for (var i = 1; i <= 8; i++) {
 				$scope.images.push(last + i);
 			}
 		};
-		*/
+	}
+]);
+*/
 
-		//$scope.placehold = new Placehold();
+/* OK 3 Reddit
+myApp.controller('HomeController', ['$scope', 'Authentication', 'Reddit',
+	function ($scope, Authentication, Reddit) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
 		$scope.reddit = new Reddit();
 	}
 ]);
 
-/*
-// Placehold constructor function to encapsulate HTTP and pagination logic
-angular.factory('Placehold', function() {
-	var Placehold = function() {
-		this.busy = false;
-		this.images = [1, 2, 3, 4, 5, 6, 7, 8];
-	};
-
-	Placehold.prototype.nextPage = function() {
-		if (this.busy) return;
-		this.busy = true;
-
-		var last = this.images[this.images.length - 1];
-		for(var i = 1; i <= 8; i++) {
-			this.images.push(last + i);
-		}
-		this.busy = false;
-	};
-
-	return Placehold;
-});
-*/
-
-
-// Reddit constructor function to encapsulate HTTP and pagination logic
-myApp.factory('Reddit', function($http) {
-	var Reddit = function() {
+//Reddit constructor function to encapsulate HTTP and pagination logic
+myApp.factory('Reddit', function ($http) {
+	var Reddit = function () {
 		this.items = [];
 		this.busy = false;
 		this.after = '';
 	};
 
-	Reddit.prototype.nextPage = function() {
+	Reddit.prototype.nextPage = function () {
 		if (this.busy) return;
 		this.busy = true;
 
 		var url = 'http://api.reddit.com/hot?after=' + this.after + '&jsonp=JSON_CALLBACK';
-		$http.jsonp(url).success(function(data) {
+		$http.jsonp(url).success(function (data) {
 			var items = data.data.children;
 			for (var i = 0; i < items.length; i++) {
 				this.items.push(items[i].data);
@@ -73,94 +55,124 @@ myApp.factory('Reddit', function($http) {
 
 	return Reddit;
 });
-
-/*
-angular.module('core', []).service(
-	'scrollAndResizeListener', function($window, $document, $timeout) {
-		var id = 0,
-			listeners = {},
-			scrollTimeoutId,
-			resizeTimeoutId;
-
-		function invokeListeners() {
-			var clientHeight = $document[0].documentElement.clientHeight,
-				clientWidth = $document[0].documentElement.clientWidth;
-
-			for (var key in listeners) {
-				if (listeners.hasOwnProperty(key)) {
-					listeners[key](clientHeight, clientWidth); // call listener with given arguments
-				}
-			}
-		}
-
-
-		$window.addEventListener('scroll', function() {
-			// cancel previous timeout (simulates stop event)
-			$timeout.cancel(scrollTimeoutId);
-
-			// wait for 200ms and then invoke listeners (simulates stop event)
-			scrollTimeoutId = $timeout(invokeListeners, 200);
-		});
-
-
-		$window.addEventListener('resize', function() {
-			$timeout.cancel(resizeTimeoutId);
-			resizeTimeoutId = $timeout(invokeListeners, 200);
-		});
-
-
-		return {
-			bindListener: function(listener) {
-				var index = ++id;
-
-				listeners[id] = listener;
-
-				return function() {
-					delete listeners[index];
-				};
-			}
-		};
-	}
-);
-
-angular.module('core').directive(
-	'imageLazySrc', function ($document, scrollAndResizeListener) {
-		return {
-			restrict: 'A',
-			link: function ($scope, $element, $attributes) {
-				var listenerRemover;
-
-				function isInView(clientHeight, clientWidth) {
-					// get element position
-					var imageRect = $element[0].getBoundingClientRect();
-
-					if (
-						(imageRect.top >= 0 && imageRect.bottom <= clientHeight) && (imageRect.left >= 0 && imageRect.right <= clientWidth)
-					) {
-						$element[0].src = $attributes.imageLazySrc; // set src attribute on element (it will load image)
-
-						// unbind event listeners when image src has been set
-						listenerRemover();
-					}
-				}
-
-				// bind listener
-				listenerRemover = scrollAndResizeListener.bindListener(isInView);
-
-				// unbind event listeners if element was destroyed
-				// it happens when you change view, etc
-				$element.on('$destroy', function () {
-					listenerRemover();
-				});
-
-
-				// explicitly call scroll listener (because, some images are in viewport already and we haven't scrolled yet)
-				isInView(
-					$document[0].documentElement.clientHeight,
-					$document[0].documentElement.clientWidth
-				);
-			}
-		};
-	}
-);
 */
+
+
+/* OK 4 placehold
+myApp.controller('HomeController', ['$scope', 'Authentication', 'Placehold',
+	function ($scope, Authentication, Placehold) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+		$scope.placehold = new Placehold();
+	}
+]);
+
+myApp.factory('Placehold', function() {
+	var Placehold = function() {
+		this.busy = false;
+		this.images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	};
+
+	Placehold.prototype.nextPage = function() {
+		if (this.busy) return;
+		this.busy = true;
+
+		var last = this.images[this.images.length - 1];
+		for(var i = 1; i <= 10; i++) {
+			this.images.push(last + i);
+		}
+		this.busy = false;
+	};
+
+	return Placehold;
+});*/
+
+/* OK 5 ngInfiniteScroll + afkl-lazy-image + placehold.it
+myApp.controller('HomeController', ['$scope', 'Authentication', 'Placehold',
+	function ($scope, Authentication, Placehold) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+		$scope.placehold = new Placehold();
+	}
+]);
+
+myApp.factory('Placehold', function() {
+	var Placehold = function() {
+		this.busy = false;
+		this.images = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	};
+
+	Placehold.prototype.nextPage = function() {
+		if (this.busy) return;
+		this.busy = true;
+
+		var last = this.images[this.images.length - 1];
+		for(var i = 1; i <= 10; i++) {
+			this.images.push(last + i);
+		}
+		this.busy = false;
+	};
+
+	return Placehold;
+});
+*/
+
+/* OK 6 - 5 + bootstrap datas
+myApp.controller('HomeController', ['$scope', 'Authentication', 'Placehold',
+	function ($scope, Authentication, Placehold) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+		$scope.placehold = new Placehold();
+	}
+]);
+
+myApp.factory('Placehold', function () {
+	var Placehold = function () {
+		this.busy = false;
+		this.images = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+	};
+
+	Placehold.prototype.nextPage = function () {
+		if (this.busy) return;
+		this.busy = true;
+
+		var last = this.images[this.images.length - 1];
+		for (var i = 1; i <= 9; i++) {
+			this.images.push(last + i);
+		}
+		this.busy = false;
+	};
+
+	return Placehold;
+});
+*/
+
+myApp.controller('HomeController', ['$scope', 'Authentication', 'Placehold',
+	function ($scope, Authentication, Placehold) {
+		// This provides Authentication context.
+		$scope.authentication = Authentication;
+		$scope.placehold = new Placehold();
+	}
+]);
+
+myApp.factory('Placehold', function () {
+	var Placehold = function () {
+		this.busy = false;
+		this.images = [];
+	};
+
+	Placehold.prototype.nextPage = function () {
+		if (this.busy) return;
+		this.busy = true;
+
+		var last = this.images[this.images.length - 1];
+		for (var i = 1; i <= 2; i++) {
+			var height = ~~(Math.random() * 500) + 100;
+			var id = ~~(Math.random() * 10000);
+			this.images.push('http://lorempixel.com/g/280/' + height + '/?' + id);
+		}
+		this.busy = false;
+	};
+
+	return Placehold;
+});

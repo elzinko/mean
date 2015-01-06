@@ -45,6 +45,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/afkl-lazy-image/release/lazy-image-style.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -54,7 +55,18 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/ngInfiniteScroll/build/ng-infinite-scroll.js',
-				'public/lib/afkl-lazy-image/release/lazy-image.js'
+				'public/lib/afkl-lazy-image/release/lazy-image.js',
+				'public/lib/get-style-property/get-style-property.js',
+				'public/lib/get-size/get-size.js',
+				'public/lib/eventEmitter/EventEmitter.js',
+				'public/lib/eventie/eventie.js',
+				'public/lib/doc-ready/doc-ready.js',
+				'public/lib/matches-selector/matches-selector.js',
+				'public/lib/outlayer/item.js',
+				'public/lib/outlayer/outlayer.js',
+				'public/lib/masonry/masonry.js',
+				'public/lib/imagesloaded/imagesloaded.js',
+				'public/lib/angular-masonry/angular-masonry.js'
 			]
 		},
 		css: [
